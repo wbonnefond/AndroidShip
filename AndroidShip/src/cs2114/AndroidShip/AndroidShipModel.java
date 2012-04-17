@@ -26,14 +26,22 @@ public class AndroidShipModel
     }
 
     /**
-     * Fires at a specific coordinate on a specified board.
+     * Fires at a specific coordinate on a specified board, turning ship cells
+     * into hit cells, and water cells into missed cells.
      * @param x The x coordinate of the fire target
      * @param y The y coordinate of the fire target
      * @param board The board to fire on, usually the opponent's board
      */
     public void fireAtCoordinate(int x, int y, AndroidShipBoard board)
     {
-        // TODO
+        if(board.getCell(x, y).getType() == Cell.SHIP)
+        {
+            board.setCell(x, y, Cell.HIT);
+        }
+        else
+        {
+            board.setCell(x, y, Cell.MISS);
+        }
     }
 
     /**
@@ -53,7 +61,7 @@ public class AndroidShipModel
             playerLabel = "Player 1's Turn";
         }
 
-        // TODO: a way to switch the boards
+        // TODO: code to switch the boards
     }
 
     /**
