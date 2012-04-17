@@ -12,6 +12,8 @@ package cs2114.AndroidShip;
 public class AndroidShipModel
 {
     private String statusLabel;
+    private String playerLabel;
+    private boolean player1turn;
 
     /**
      * The constructor for this model.
@@ -19,6 +21,8 @@ public class AndroidShipModel
     public AndroidShipModel()
     {
         statusLabel = "";
+        playerLabel = "Player 1's Turn";
+        player1turn = true;
     }
 
     /**
@@ -29,7 +33,7 @@ public class AndroidShipModel
      */
     public void fireAtCoordinate(int x, int y, AndroidShipBoard board)
     {
-        // todo
+        // TODO
     }
 
     /**
@@ -38,15 +42,27 @@ public class AndroidShipModel
      */
     public void switchPlayers()
     {
-        // todo
+        if(player1turn)
+        {
+            player1turn = false;
+            playerLabel = "Player 2's Turn";
+        }
+        else
+        {
+            player1turn = true;
+            playerLabel = "Player 1's Turn";
+        }
+
+        // TODO: a way to switch the boards
     }
 
     /**
      * Updates the status label to the most recent move.
      * @param message The message to apply to the status label
      */
-    public void updateLabel(String message)
+    public void updateStatusLabel(String message)
     {
         statusLabel = message;
     }
+
 }
