@@ -1,4 +1,4 @@
-package cs2114.mazesolver;
+package cs2114.AndroidShip;
 
 import android.graphics.Paint;
 
@@ -84,6 +84,6 @@ public class Cell
 
     public Paint getPaint()
     {
-        return
+        return;
     }
 }

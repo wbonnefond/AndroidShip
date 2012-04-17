@@ -1,4 +1,4 @@
-package cs2114.mazesolver;
+package cs2114.AndroidShip;
 
 import android.graphics.Color;
 import android.graphics.Paint;
