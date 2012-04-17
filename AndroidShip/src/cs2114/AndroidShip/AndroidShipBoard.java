@@ -58,7 +58,7 @@ public class AndroidShipBoard
      */
     public Cell getCell(int x, int y)
     {
-        return shipCells[x][y];
+        return shipCells1[x][y];
     }
 
     /**
@@ -67,12 +67,12 @@ public class AndroidShipBoard
      * @param y - row that the cell is in
      * @param type - type of cell that the spot will be changed into
      */
-    public void setCell(int x, int y, int type)
+    public void setCell(int x, int y, Cell type)
     {
-        shipCells[x][y] = type;
+        shipCells1[x][y].setType(type);
 
-        //setChanged();
-        //notifyObservers();
+        setChanged();
+        notifyObservers();
     }
 
     /**
@@ -86,7 +86,7 @@ public class AndroidShipBoard
         {
             for (int j = 0; j < 10; j++)
             {
-                if (shipCells[i][j] = Cell.)
+                if (shipCells1[i][j] =
             }
         }
     }
