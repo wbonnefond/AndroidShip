@@ -29,7 +29,7 @@ public class Cell
     public final static int HIT = 2;
 
     /**
-     * The enumerated type for a misfire cell.
+     * The enumerated type for a misfired cell.
      */
     public final static int MISS = 3;
 
