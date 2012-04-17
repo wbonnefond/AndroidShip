@@ -11,11 +11,14 @@ package cs2114.AndroidShip;
 
 public class AndroidShipModel
 {
+    private String statusLabel;
+
     /**
      * The constructor for this model.
      */
     public AndroidShipModel()
     {
+        statusLabel = "";
     }
 
     /**
@@ -36,5 +39,14 @@ public class AndroidShipModel
     public void switchPlayers()
     {
         // todo
+    }
+
+    /**
+     * Updates the status label to the most recent move.
+     * @param message The message to apply to the status label
+     */
+    public void updateLabel(String message)
+    {
+        statusLabel = message;
     }
 }
