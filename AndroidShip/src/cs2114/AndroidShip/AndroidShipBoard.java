@@ -13,6 +13,7 @@ import java.util.Observable;
  *  @version Apr 16, 2012
  */
 public class AndroidShipBoard
+    extends Observable
 {
     private Cell[][] shipCells1;
     private Cell[][] shipCells2;
@@ -45,8 +46,8 @@ public class AndroidShipBoard
             }
         }
 
-        //setChanged();
-        //notifyObservers();
+        setChanged();
+        notifyObservers();
     }
 
     /**
