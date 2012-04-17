@@ -7,6 +7,7 @@ import java.util.Random;
  * // -------------------------------------------------------------------------
 /**
  *  This is the AndroidShipBoard class. It creates the board and sets it up.
+ *  this is another test
  *
  *  @author Ward Bonnefond (wardwdb)
  *  @author Tyler Ritchie (ritchie4)
