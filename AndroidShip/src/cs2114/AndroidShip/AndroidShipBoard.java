@@ -1,6 +1,7 @@
 package cs2114.AndroidShip;
 
 import java.util.Observable;
+import java.util.Random;
 
 /**
  * // -------------------------------------------------------------------------
@@ -25,6 +26,7 @@ public class AndroidShipBoard
     {
         shipCells = new Cell[10][10];
         setCellsToWater();
+        placeShips();
     }
 
     /**
@@ -67,6 +69,14 @@ public class AndroidShipBoard
 
         setChanged();
         notifyObservers();
+    }
+
+    /**
+     * Places both users ships randomly on the board.
+     */
+    public void placeShips()
+    {
+        //5, 4, 3, 3, 2
     }
 }
 
