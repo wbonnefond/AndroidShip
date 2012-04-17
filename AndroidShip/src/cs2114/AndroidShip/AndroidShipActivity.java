@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * This is the activity class for the AndroidShip game.
+ * This is the activity class for the AndroidShip game. THIS IS A FUCKING TEST
  *
  *  @author Ward Bonnefond (wardwdb)
  *  @author Tyler Ritchie (ritchie4)
