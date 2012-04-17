@@ -1,5 +1,6 @@
 package cs2114.AndroidShip;
 
+import android.graphics.Color;
 import android.graphics.Paint;
 
 /**
@@ -63,27 +64,33 @@ public class Cell
         return currentType;
     }
 
+    /**
+     * Sets the color of the Paint object.
+     */
     public void setPaint()
     {
         switch(currentType)
         {
-            case WATER: brush.setColor(color);
+            case SHIP: brush.setColor(Color.rgb(0, 178, 255));
+            break;
+
+            case WATER: brush.setColor(Color.rgb(0, 0, 255));
+            break;
+
+            case HIT: brush.setColor(Color.rgb(255, 0, 0));
                 break;
 
-            case SHIP:
+            case MISS: brush.setColor(Color.rgb(160, 160, 160));
                 break;
-
-            case HIT:
-                break;
-
-            case MISS:
-                break;
-
         }
     }
 
+    /**
+     * Gets the Paint object for the cells.
+     * @return brush The Paint object
+     */
     public Paint getPaint()
     {
-        return;
+        return brush;
     }
 }
