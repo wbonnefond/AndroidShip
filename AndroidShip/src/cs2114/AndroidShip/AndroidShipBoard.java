@@ -15,9 +15,7 @@ import java.util.Observable;
 public class AndroidShipBoard
     extends Observable
 {
-    private Cell[][] shipCells1;
-    private Cell[][] shipCells2;
-    private Cell[][] hideCellArray;
+    private Cell[][] shipCells;
 
     /**
      * Constructor for the AndroidShipBoard. Creates the board and sets all of
@@ -25,9 +23,7 @@ public class AndroidShipBoard
      */
     public AndroidShipBoard()
     {
-        shipCells1 = new Cell[10][10];
-        shipCells2 = new Cell[10][10];
-        hideCellArray = new Cell[10][10];
+        shipCells = new Cell[10][10];
         setCellsToWater();
     }
 
@@ -40,9 +36,7 @@ public class AndroidShipBoard
         {
             for (int j = 0; j < 10; j++)
             {
-                shipCells1[i][j] = new Cell(Cell.WATER);
-                shipCells2[i][j] = new Cell(Cell.WATER);
-                hideCellArray[i][j] = new Cell(Cell.WATER);
+                shipCells[i][j] = new Cell(Cell.WATER);
             }
         }
 
@@ -58,7 +52,7 @@ public class AndroidShipBoard
      */
     public Cell getCell(int x, int y)
     {
-        return shipCells1[x][y];
+        return shipCells[x][y];
     }
 
     /**
@@ -69,26 +63,10 @@ public class AndroidShipBoard
      */
     public void setCell(int x, int y, Cell type)
     {
-        shipCells1[x][y].setType(type);
+        shipCells[x][y].setType(type);
 
         setChanged();
         notifyObservers();
-    }
-
-    /**
-     * Hides the opposing players board so that the current player cannot see
-     * where the other players ships are. They can only see where they have hit
-     * and missed the ships.
-     */
-    public void hideBoard()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                if (shipCells1[i][j] =
-            }
-        }
     }
 }
 
