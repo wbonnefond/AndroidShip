@@ -78,6 +78,7 @@ public class AndroidShipBoard
     public void placeShips()
     {
         //5, 4, 3, 3, 2
+        int a;
     }
 }
 
