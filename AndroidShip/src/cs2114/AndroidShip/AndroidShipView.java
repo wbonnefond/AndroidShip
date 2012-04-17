@@ -1,12 +1,5 @@
 package cs2114.AndroidShip;
 
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import java.util.Observable;
-import java.util.Observer;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
