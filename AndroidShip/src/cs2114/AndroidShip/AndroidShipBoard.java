@@ -4,8 +4,7 @@ import java.util.Observable;
 import java.util.Random;
 
 /**
- * // -------------------------------------------------------------------------
- * /** This is the AndroidShipBoard class. It creates the board and sets it up.
+ *  This is the AndroidShipBoard class. It creates the board and sets it up.
  *
  * @author Ward Bonnefond (wardwdb)
  * @author Tyler Ritchie (ritchie4)
