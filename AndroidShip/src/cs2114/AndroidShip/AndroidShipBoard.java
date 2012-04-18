@@ -135,6 +135,10 @@ public class AndroidShipBoard
      * Once the first ship point is picked, this establishes a random direction
      * to place the rest of the ship cells in, if the space for them is
      * present.
+     *
+     * @param coordX x coordinate where ship starts
+     * @param coordY y coordinate where ship starts
+     * @param shipCells cells of ship
      */
     public void pickRandomDirection(int coordX, int coordY, int shipCells)
     {
