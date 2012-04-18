@@ -19,11 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <uses-library android:name="android.test.runner" />"
-=======
         <uses-library android:name="android.test.runner" />
->>>>>>> branch 'master' of https://wbonnefond@github.com/wbonnefond/AndroidShip.git
     </application>
 
 </manifest>

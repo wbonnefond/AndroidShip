@@ -37,6 +37,13 @@ public class AndroidShipModel {
         }
     }
 
+    // ----------------------------------------------------------
+    /**
+     * Used to fire at the board
+     * @param xCoor the x coordinate
+     * @param yCoor the y coordinate
+     * @return whether it was successful
+     */
     public boolean fireAtBoard(int xCoor, int yCoor) {
         boolean firedSuccessful = false;
         if (currentPlayerBoard == player1Board) {
@@ -57,8 +64,9 @@ public class AndroidShipModel {
             else if (player1Board.getCell(xCoor, yCoor) == Cell.WATER) {
                 player1Board.setCell(xCoor, yCoor, Cell.MISS);
                 firedSuccessful = true;
+            }
         }
-            return firedSuccessful;
+        return firedSuccessful;
     }
 
 
