@@ -1,6 +1,9 @@
 package cs2114.AndroidShip;
 
-public class CellTest
+import student.TestCase;
+
+
+public class CellTest extends TestCase
 {
 
 }
