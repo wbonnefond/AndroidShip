@@ -9,71 +9,90 @@ package cs2114.AndroidShip;
  *  @version Apr 16, 2012
  */
 
-public class AndroidShipModel
-{
-    private String statusLabel;
-    private String playerLabel;
-    private boolean player1Turn;
-    private AndroidShipBoard player1;
-    private AndroidShipBoard player2;
+public class AndroidShipModel {
 
+    private AndroidShipBoard player1Board;
+    private AndroidShipBoard player2Board;
+    private AndroidShipBoard currentPlayerBoard;
 
     /**
-     * The constructor for this model.
+     * Constructor for AndroidShipModel
      */
-    public AndroidShipModel()
-    {
-        statusLabel = "";
-        playerLabel = "Player 1's Turn";
-        player1Turn = true;
+    public AndroidShipModel() {
+        player1Board = new AndroidShipBoard();
+        player2Board = new AndroidShipBoard();
+        currentPlayerBoard = player1Board;
     }
 
+    // ----------------------------------------------------------
     /**
-     * Fires at a specific coordinate on a specified board, turning ship cells
-     * into hit cells, and water cells into missed cells.
-     * @param x The x coordinate of the fire target
-     * @param y The y coordinate of the fire target
-     * @param board The board to fire on, usually the opponent's board
+     * Switches the current board to the other player.
      */
-    public void fireAtCoordinate(int x, int y, AndroidShipBoard board)
-    {
-        if(board.getCell(x, y).getType() == Cell.SHIP)
-        {
-            board.setCell(x, y, Cell.HIT);
+    public void switchBoard() {
+        if (currentPlayerBoard == player1Board) {
+            currentPlayerBoard = player2Board;
         }
-        else
-        {
-            board.setCell(x, y, Cell.MISS);
+        else {
+            currentPlayerBoard = player1Board;
         }
     }
 
-    /**
-     * Switches the labels, boards, and status labels when the phone is
-     * handed to the other player after a turn.
-     */
-    public void switchPlayers()
-    {
-        if(player1Turn)
-        {
-            player1Turn = false;
-            playerLabel = "Player 2's Turn";
+    public boolean fireAtBoard(int xCoor, int yCoor) {
+        boolean firedSuccessful = false;
+        if (currentPlayerBoard == player1Board) {
+            if (player2Board.getCell(xCoor, yCoor) == Cell.SHIP) {
+                player2Board.setCell(xCoor, yCoor, Cell.HIT);
+                firedSuccessful = true;
+            }
+            else if (player2Board.getCell(xCoor, yCoor) == Cell.WATER) {
+                player2Board.setCell(xCoor, yCoor, Cell.MISS);
+                firedSuccessful = true;
+            }
         }
-        else
-        {
-            player1Turn = true;
-            playerLabel = "Player 1's Turn";
+        else {
+            if (player1Board.getCell(xCoor, yCoor) == Cell.SHIP) {
+                player1Board.setCell(xCoor, yCoor, Cell.HIT);
+                firedSuccessful = true;
+            }
+            else if (player1Board.getCell(xCoor, yCoor) == Cell.WATER) {
+                player1Board.setCell(xCoor, yCoor, Cell.MISS);
+                firedSuccessful = true;
         }
+            return firedSuccessful;
+    }
 
-        // TODO: code to switch the boards
+
+
+
+
+
+
+
+
+
+    /**
+     * Returns the current board for testing purposes.
+     * @return the current board
+     */
+    public AndroidShipBoard getCurrentBoard() {
+        return currentPlayerBoard;
     }
 
     /**
-     * Updates the status label to the most recent move.
-     * @param message The message to apply to the status label
+     * Returns the player 1 board for testing purposes.
+     * @return the player 1 board
      */
-    public void updateStatusLabel(String message)
-    {
-        statusLabel = message;
+    public AndroidShipBoard getPlayer1Board() {
+        return player1Board;
     }
+
+    /**
+     * Returns the player 2 board for testing purposes.
+     * @return the player 2 board
+     */
+    public AndroidShipBoard getPlayer2Board() {
+        return player2Board;
+    }
+
 
 }
