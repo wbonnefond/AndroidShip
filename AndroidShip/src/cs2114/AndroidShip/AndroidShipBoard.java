@@ -86,13 +86,10 @@ public class AndroidShipBoard
 
 
     /**
-     * Places both users ships randomly on the board.
+     * Places both users ships randomly on the board. There are 5 ships placed.
      */
     public void placeShips()
     {
-        // 5, 4, 3, 3, 2
-        int a;
-
         placeFive();
         placeFour();
         placeThree();
