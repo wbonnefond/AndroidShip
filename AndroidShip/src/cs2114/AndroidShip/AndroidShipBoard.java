@@ -50,10 +50,8 @@ public class AndroidShipBoard
     /**
      * Gets the maze cell.
      *
-     * @param x
-     *            - column that the cell is in
-     * @param y
-     *            - row that the cell is in
+     * @param x - column that the cell is in
+     * @param y - row that the cell is in
      * @return MazeCell - returns a maze cell
      */
     public Cell getCell(int x, int y)
@@ -65,12 +63,9 @@ public class AndroidShipBoard
     /**
      * Sets the cell
      *
-     * @param x
-     *            - column that the cell is in
-     * @param y
-     *            - row that the cell is in
-     * @param c
-     *            - type of cell that the spot will be changed into
+     * @param x - column that the cell is in
+     * @param y - row that the cell is in
+     * @param c - type of cell that the spot will be changed into
      */
     public void setCell(int x, int y, Cell c)
     {
