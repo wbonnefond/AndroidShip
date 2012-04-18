@@ -97,5 +97,79 @@ public class AndroidShipBoard
     {
         // 5, 4, 3, 3, 2
         int a;
+
+        placeFive();
+        placeFour();
+        placeThree();
+        placeThree();
+        placeTwo();
+    }
+
+    /**
+     * Places the ship that takes up five cells.
+     */
+    public void placeFive()
+    {
+        int x = (int)(Math.random()*11);
+        int y = (int)(Math.random()*11);
+        pickRandomDirection(x, y, 5);
+    }
+
+    /**
+     * Places the ship that takes up four cells.
+     */
+    public void placeFour()
+    {
+
+    }
+
+    /**
+     * Places the ship that takes up three cells.
+     */
+    public void placeThree()
+    {
+
+    }
+
+    /**
+     * Places the ship that takes up two cells.
+     */
+    public void placeTwo()
+    {
+
+    }
+
+    /**
+     * Once the first ship point is picked, this establishes a random direction
+     * to place the rest of the ship cells in, if the space for them is
+     * present.
+     */
+    public void pickRandomDirection(int coordX, int coordY, int shipCells)
+    {
+        int x = coordX;
+        int y = coordY;
+        int randomDirection = (int)(Math.random()*4);
+        int shipCellSize = shipCells;
+
+        // Try going up.
+        if(randomDirection == 0 && y - (shipCellSize-1) >= 0)
+        {
+            for(int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            {
+                setCell(x, y, Cell.SHIP); //
+                y--;
+            }
+        }
+
+        // Try going right.
+        else if(randomDirection == 1 && x + (shipCellSize-1) <= 10)
+        {
+            for(int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            {
+                setCell(x, y, Cell.SHIP);
+                y--;
+            }
+        }
+
     }
 }
