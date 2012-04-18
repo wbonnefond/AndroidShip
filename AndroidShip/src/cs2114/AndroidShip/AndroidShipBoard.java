@@ -81,6 +81,15 @@ public class AndroidShipBoard
         notifyObservers();
     }
 
+    /**
+     * Returns the size of the board.
+     * @return returns board size
+     */
+    public int getBoardSize()
+    {
+        return 10;
+    }
+
 
     /**
      * Places both users ships randomly on the board.
