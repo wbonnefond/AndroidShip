@@ -3,7 +3,7 @@ package cs2114.AndroidShip;
 import android.app.Activity;
 
 /**
- * This is the activity class for the AndroidShip game. THIS IS A FUCKING TEST
+ * This is the activity class for the AndroidShip game.
  *
  *  @author Ward Bonnefond (wardwdb)
  *  @author Tyler Ritchie (ritchie4)

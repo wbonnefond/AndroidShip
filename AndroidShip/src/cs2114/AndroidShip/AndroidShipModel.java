@@ -66,10 +66,6 @@ public class AndroidShipModel {
 
 
 
-
-
-
-
     /**
      * Returns the current board for testing purposes.
      * @return the current board
