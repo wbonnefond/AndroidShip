@@ -4,20 +4,18 @@ import java.util.Observable;
 import java.util.Random;
 
 /**
- * // -------------------------------------------------------------------------
-/**
  *  This is the AndroidShipBoard class. It creates the board and sets it up.
- *  this is another test
  *
- *  @author Ward Bonnefond (wardwdb)
- *  @author Tyler Ritchie (ritchie4)
- *  @author Nick Crowder (crowdern)
- *  @version Apr 16, 2012
+ * @author Ward Bonnefond (wardwdb)
+ * @author Tyler Ritchie (ritchie4)
+ * @author Nick Crowder (crowdern)
+ * @version Apr 16, 2012
  */
 public class AndroidShipBoard
     extends Observable
 {
     private Cell[][] shipCells;
+
 
     /**
      * Constructor for the AndroidShipBoard. Creates the board and sets all of
@@ -30,6 +28,7 @@ public class AndroidShipBoard
         placeShips();
     }
 
+
     /**
      * Sets all of the cells on the board to water.
      */
@@ -39,7 +38,7 @@ public class AndroidShipBoard
         {
             for (int j = 0; j < 10; j++)
             {
-                shipCells[i][j] = new Cell(Cell.WATER);
+                setCell(i, j, Cell.WATER);
             }
         }
 
@@ -47,10 +46,14 @@ public class AndroidShipBoard
         notifyObservers();
     }
 
+
     /**
      * Gets the maze cell.
-     * @param x - column that the cell is in
-     * @param y - row that the cell is in
+     *
+     * @param x
+     *            - column that the cell is in
+     * @param y
+     *            - row that the cell is in
      * @return MazeCell - returns a maze cell
      */
     public Cell getCell(int x, int y)
@@ -58,13 +61,18 @@ public class AndroidShipBoard
         return shipCells[x][y];
     }
 
+
     /**
      * Sets the cell
-     * @param x - column that the cell is in
-     * @param y - row that the cell is in
-     * @param type - type of cell that the spot will be changed into
+     *
+     * @param x
+     *            - column that the cell is in
+     * @param y
+     *            - row that the cell is in
+     * @param type
+     *            - type of cell that the spot will be changed into
      */
-    public void setCell(int x, int y, Cell type)
+    public void setCell(int x, int y, int type)
     {
         shipCells[x][y].setType(type);
 
@@ -72,13 +80,13 @@ public class AndroidShipBoard
         notifyObservers();
     }
 
+
     /**
      * Places both users ships randomly on the board.
      */
     public void placeShips()
     {
-        //5, 4, 3, 3, 2
+        // 5, 4, 3, 3, 2
         int a;
     }
 }
-
