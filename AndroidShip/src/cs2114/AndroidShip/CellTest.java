@@ -5,5 +5,11 @@ import student.TestCase;
 
 public class CellTest extends TestCase
 {
+    public void setUp() {
 
+    }
+
+    public void testSetCell() {
+
+    }
 }
