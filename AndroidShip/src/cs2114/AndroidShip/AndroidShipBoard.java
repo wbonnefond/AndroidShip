@@ -69,12 +69,12 @@ public class AndroidShipBoard
      *            - column that the cell is in
      * @param y
      *            - row that the cell is in
-     * @param type
+     * @param c
      *            - type of cell that the spot will be changed into
      */
-    public void setCell(int x, int y, int type)
+    public void setCell(int x, int y, Cell c)
     {
-        shipCells[x][y].setType(type);
+        shipCells[x][y] = c;
 
         setChanged();
         notifyObservers();
