@@ -13,7 +13,10 @@ public class AndroidShipModel
 {
     private String statusLabel;
     private String playerLabel;
-    private boolean player1turn;
+    private boolean player1Turn;
+    private AndroidShipBoard player1;
+    private AndroidShipBoard player2;
+
 
     /**
      * The constructor for this model.
@@ -22,7 +25,7 @@ public class AndroidShipModel
     {
         statusLabel = "";
         playerLabel = "Player 1's Turn";
-        player1turn = true;
+        player1Turn = true;
     }
 
     /**
@@ -50,14 +53,14 @@ public class AndroidShipModel
      */
     public void switchPlayers()
     {
-        if(player1turn)
+        if(player1Turn)
         {
-            player1turn = false;
+            player1Turn = false;
             playerLabel = "Player 2's Turn";
         }
         else
         {
-            player1turn = true;
+            player1Turn = true;
             playerLabel = "Player 1's Turn";
         }
 
