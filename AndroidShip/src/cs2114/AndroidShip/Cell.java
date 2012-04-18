@@ -13,24 +13,29 @@ import android.graphics.Paint;
 public class Cell
 {
     /**
+     * The enumerated type for a misfired cell.
+     */
+    public final static int INVALID_CELL = 0;
+
+    /**
      * The enumerated type for a water cell.
      */
-    public final static Cell WATER = 0;
+    public final static int WATER = 1;
 
     /**
      * The enumerated type for a ship cell.
      */
-    public final static int SHIP = 1;
+    public final static int SHIP = 2;
 
     /**
      * The enumerated type for a hit cell.
      */
-    public final static int HIT = 2;
+    public final static int HIT = 3;
 
     /**
      * The enumerated type for a misfired cell.
      */
-    public final static int MISS = 3;
+    public final static int MISS = 4;
 
     private Paint brush;
     private int currentType;
@@ -51,7 +56,6 @@ public class Cell
     public void setType(int type)
     {
         currentType = type;
-        setPaint();
     }
 
     /**
@@ -63,27 +67,4 @@ public class Cell
         return currentType;
     }
 
-    public void setPaint()
-    {
-        switch(currentType)
-        {
-            case WATER: brush.setColor(color);
-                break;
-
-            case SHIP:
-                break;
-
-            case HIT:
-                break;
-
-            case MISS:
-                break;
-
-        }
-    }
-
-    public Paint getPaint()
-    {
-        return;
-    }
 }
