@@ -120,40 +120,44 @@ public class AndroidShipBoard
         // Try going up.
         if (randomDirection == 0 && y - (shipCellSize - 1) >= 0)
         {
-            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            while(shipCellSize > 0)
             {
                 setCell(x, y, Cell.SHIP);
                 y--;
+                shipCellSize--;
             }
         }
 
         // Try going right.
         else if (randomDirection == 1 && x + (shipCellSize - 1) <= 10)
         {
-            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            while(shipCellSize > 0)
             {
                 setCell(x, y, Cell.SHIP);
                 x++;
+                shipCellSize--;
             }
         }
 
         // Try going down.
         else if (randomDirection == 2 && y + (shipCellSize - 1) <= 10)
         {
-            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            while(shipCellSize > 0)
             {
                 setCell(x, y, Cell.SHIP);
                 y++;
+                shipCellSize--;
             }
         }
 
         // Try going left.
         else if (randomDirection == 3 && x - (shipCellSize - 1) >= 0)
         {
-            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            while(shipCellSize > 0)
             {
                 setCell(x, y, Cell.SHIP);
                 x--;
+                shipCellSize--;
             }
         }
 
