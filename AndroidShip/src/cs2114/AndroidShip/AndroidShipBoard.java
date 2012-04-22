@@ -14,6 +14,7 @@ public class AndroidShipBoard
     extends Observable
 {
     private Cell[][] shipCells;
+    private boolean isPlaced;
 
 
     /**
@@ -22,6 +23,7 @@ public class AndroidShipBoard
      */
     public AndroidShipBoard()
     {
+        isPlaced = false;
         shipCells = new Cell[10][10];
         setCellsToWater();
     }
@@ -95,11 +97,36 @@ public class AndroidShipBoard
     public void placeShips()
     {
         // Ship sizes: 5, 4, 3, 3, 2
-        pickRandomDirection(5);
+        // Keep running each method until the ship is actually placed
+
+        if(!isPlaced)
+        {
+            pickRandomDirection(5);
+        }
+        isPlaced = false;
+
+        if(!isPlaced)
+        {
         pickRandomDirection(4);
+        }
+        isPlaced = false;
+
+        if(!isPlaced)
+        {
         pickRandomDirection(3);
+        }
+        isPlaced = false;
+
+        if(!isPlaced)
+        {
         pickRandomDirection(3);
+        }
+        isPlaced = false;
+
+        if(!isPlaced)
+        {
         pickRandomDirection(2);
+        }
     }
 
 
@@ -120,16 +147,20 @@ public class AndroidShipBoard
         // Try going up.
         if (randomDirection == 0 && y - (shipCellSize - 1) >= 0)
         {
-            while(shipCellSize > 0)
+            if(checkAhead(x, y, shipCellSize, randomDirection))
             {
-                setCell(x, y, Cell.SHIP);
-                y--;
-                shipCellSize--;
+                while (shipCellSize > 0)
+                {
+                    setCell(x, y, Cell.SHIP);
+                    y--;
+                    shipCellSize--;
+                }
+                isPlaced = true;
             }
         }
 
         // Try going right.
-        else if (randomDirection == 1 && x + (shipCellSize - 1) <= 10)
+        else if (randomDirection == 1 && x + (shipCellSize - 1) <= 9)
         {
             while(shipCellSize > 0)
             {
@@ -137,10 +168,11 @@ public class AndroidShipBoard
                 x++;
                 shipCellSize--;
             }
+            isPlaced = true;
         }
 
         // Try going down.
-        else if (randomDirection == 2 && y + (shipCellSize - 1) <= 10)
+        else if (randomDirection == 2 && y + (shipCellSize - 1) <= 9)
         {
             while(shipCellSize > 0)
             {
@@ -148,6 +180,7 @@ public class AndroidShipBoard
                 y++;
                 shipCellSize--;
             }
+            isPlaced = true;
         }
 
         // Try going left.
@@ -159,7 +192,38 @@ public class AndroidShipBoard
                 x--;
                 shipCellSize--;
             }
+            isPlaced = true;
         }
+    }
 
+    // ----------------------------------------------------------
+    /**
+     * Checks ahead to see if there are already ships in the new ship placement
+     * path.
+     * @param xCoord The xCoord to start at
+     * @param yCoord The yCoord to start at
+     * @param sCellSize The new ship's size
+     * @return Whether the path to place the ship is clear or not
+     */
+    private boolean checkAhead(int xCoord, int yCoord, int sCellSize, int dir)
+    {
+        int x = xCoord;
+        int y = yCoord;
+        int shipCellSize = sCellSize;
+        int randomDirection = dir;
+        int truthCounter = 0;
+
+        // Look up.
+        if(randomDirection == 0)
+        {
+            while(y >= y-(shipCellSize-1))
+            {
+                if(shipCells[x][y] == Cell.WATER)
+                {
+                    truthCounter++;
+                }
+            }
+        }
+        return shipCellSize == truthCounter;
     }
 }
