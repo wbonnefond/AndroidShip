@@ -28,13 +28,15 @@ public class AndroidShipActivity
 
         player = new AndroidShipBoard();
         opponent = new AndroidShipBoard();
-        player.placeShips();
-        opponent.placeShips();
+        //player.placeShips();
+        //opponent.placeShips();
 
         playerView = (AndroidShipView) findViewById(R.id.shipViewPlayer);
         opponentView = (AndroidShipView) findViewById(R.id.shipViewOpponent);
 
         playerView.setBoard(player);
+        opponentView.setBoard(opponent);
+        playerView.setClickable(false);
 
         // Testing
 

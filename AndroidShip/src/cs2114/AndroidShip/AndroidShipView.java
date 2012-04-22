@@ -52,8 +52,19 @@ public class AndroidShipView
     public boolean onTouchEvent(MotionEvent e) {
         boolean touched = false;
 
+        float cellWidth = getWidth() / board.getBoardSize();
+        float cellHeight = getHeight() / board.getBoardSize();
         switch(e.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                int touchX = (int)(e.getX() / cellWidth);
+                int touchY = (int)(e.getY() / cellHeight);
+
+                if (board.getCell(touchX, touchY) == Cell.WATER) {
+                    board.setCell(touchX, touchY, Cell.MISS);
+                }
+                else if (board.getCell(touchX, touchY) == Cell.SHIP) {
+                    board.setCell(touchX, touchY, Cell.HIT);
+                }
                 touched = true;
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -105,25 +116,6 @@ public class AndroidShipView
 
             }
         }
-    }
-
- // ----------------------------------------------------------
-    /**
-     * Overridden to force the view to be square (have the same width and
-     * height).
-     *
-     * @param widthMeasureSpec the desired width as determined by the layout
-     * @param heightMeasureSpec the desired height as determined by the layout
-     */
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-    {
-        // Choose the smallest of the two dimensions to use for both.
-        int measureSpec = Math.min(widthMeasureSpec, heightMeasureSpec);
-
-        // Call the superclass implementation but pass it our modified width
-        // and height instead of the incoming ones.
-        super.onMeasure(measureSpec, measureSpec);
     }
 
     /**
