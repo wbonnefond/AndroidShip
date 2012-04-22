@@ -32,6 +32,7 @@ public class AndroidShipActivity
         opponent.placeShips();
 
 
+        // Testing
 
     }
 
