@@ -1,5 +1,6 @@
 package cs2114.AndroidShip;
 
+import android.widget.TextView;
 import android.os.Bundle;
 import android.app.Activity;
 
@@ -19,7 +20,7 @@ public class AndroidShipActivity
     private AndroidShipBoard opponent;
     private AndroidShipView playerView;
     private AndroidShipView opponentView;
-    private String statusLabel;
+    private TextView statusLabel;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -33,11 +34,13 @@ public class AndroidShipActivity
 
         playerView = (AndroidShipView) findViewById(R.id.shipViewPlayer);
         opponentView = (AndroidShipView) findViewById(R.id.shipViewOpponent);
+        statusLabel = (TextView) findViewById(R.id.statusLabel);
 
         playerView.setBoard(player);
         opponentView.setBoard(opponent);
 
-        // Testing AGAIN
+        playerView.setClickable(true);
+
 
     }
 
