@@ -38,7 +38,7 @@ public class AndroidShipActivity
         opponentView.setBoard(opponent);
         playerView.setClickable(false);
 
-        // Testing
+        // Testing AGAIN
 
     }
 
