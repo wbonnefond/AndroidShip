@@ -3,10 +3,23 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+
+    <cs2114.AndroidShip.AndroidShipView
+        android:id="@+id/shipViewOpponent"
+        android:layout_width="wrap_content"
+        android:layout_height="219dp" />
+
     <TextView
-        android:layout_width="fill_parent"
+        android:id="@+id/statusLabel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:layout_weight="0.82"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <cs2114.AndroidShip.AndroidShipView
+        android:id="@+id/shipViewPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="221dp" />
 
 </LinearLayout>
