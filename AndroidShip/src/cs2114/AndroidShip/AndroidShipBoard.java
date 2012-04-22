@@ -1,10 +1,9 @@
 package cs2114.AndroidShip;
 
 import java.util.Observable;
-import java.util.Random;
 
 /**
- *  This is the AndroidShipBoard class. It creates the board and sets it up.
+ * This is the AndroidShipBoard class. It creates the board and sets it up.
  *
  * @author Ward Bonnefond (wardwdb)
  * @author Tyler Ritchie (ritchie4)
@@ -25,7 +24,6 @@ public class AndroidShipBoard
     {
         shipCells = new Cell[10][10];
         setCellsToWater();
-        placeShips();
     }
 
 
@@ -50,8 +48,10 @@ public class AndroidShipBoard
     /**
      * Gets the maze cell.
      *
-     * @param x - column that the cell is in
-     * @param y - row that the cell is in
+     * @param x
+     *            - column that the cell is in
+     * @param y
+     *            - row that the cell is in
      * @return MazeCell - returns a maze cell
      */
     public Cell getCell(int x, int y)
@@ -63,9 +63,12 @@ public class AndroidShipBoard
     /**
      * Sets the cell
      *
-     * @param x - column that the cell is in
-     * @param y - row that the cell is in
-     * @param c - type of cell that the spot will be changed into
+     * @param x
+     *            - column that the cell is in
+     * @param y
+     *            - row that the cell is in
+     * @param c
+     *            - type of cell that the spot will be changed into
      */
     public void setCell(int x, int y, Cell c)
     {
@@ -75,8 +78,10 @@ public class AndroidShipBoard
         notifyObservers();
     }
 
+
     /**
      * Returns the size of the board.
+     *
      * @return returns board size
      */
     public int getBoardSize()
@@ -86,84 +91,70 @@ public class AndroidShipBoard
 
 
     /**
-     * Places both users ships randomly on the board. There are 5 ships placed.
+     * Places both users ships randomly on the board.
      */
     public void placeShips()
     {
-        placeFive();
-        placeFour();
-        placeThree();
-        placeThree();
-        placeTwo();
+        // Ship sizes: 5, 4, 3, 3, 2
+        pickRandomDirection(5);
+        pickRandomDirection(4);
+        pickRandomDirection(3);
+        pickRandomDirection(3);
+        pickRandomDirection(2);
     }
 
-    /**
-     * Places the ship that takes up five cells.
-     */
-    public void placeFive()
-    {
-        int x = (int)(Math.random()*11);
-        int y = (int)(Math.random()*11);
-        pickRandomDirection(x, y, 5);
-    }
-
-    /**
-     * Places the ship that takes up four cells.
-     */
-    public void placeFour()
-    {
-
-    }
-
-    /**
-     * Places the ship that takes up three cells.
-     */
-    public void placeThree()
-    {
-
-    }
-
-    /**
-     * Places the ship that takes up two cells.
-     */
-    public void placeTwo()
-    {
-
-    }
 
     /**
      * Once the first ship point is picked, this establishes a random direction
-     * to place the rest of the ship cells in, if the space for them is
-     * present.
+     * to place the rest of the ship cells in, if the space for them is present.
      *
-     * @param coordX x coordinate where ship starts
-     * @param coordY y coordinate where ship starts
-     * @param shipCells cells of ship
+     * @param shipCellAmount
+     *            The amount of cells that the ship takes up
      */
-    public void pickRandomDirection(int coordX, int coordY, int shipCells)
+    public void pickRandomDirection(int shipCellAmount)
     {
-        int x = coordX;
-        int y = coordY;
-        int randomDirection = (int)(Math.random()*4);
-        int shipCellSize = shipCells;
+        int x = (int)(Math.random() * 10);
+        int y = (int)(Math.random() * 10);
+        int randomDirection = (int)(Math.random() * 4);
+        int shipCellSize = shipCellAmount;
 
         // Try going up.
-        if(randomDirection == 0 && y - (shipCellSize-1) >= 0)
+        if (randomDirection == 0 && y - (shipCellSize - 1) >= 0)
         {
-            for(int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
             {
-                setCell(x, y, Cell.SHIP); //
+                setCell(x, y, Cell.SHIP);
                 y--;
             }
         }
 
         // Try going right.
-        else if(randomDirection == 1 && x + (shipCellSize-1) <= 10)
+        else if (randomDirection == 1 && x + (shipCellSize - 1) <= 10)
         {
-            for(int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
             {
                 setCell(x, y, Cell.SHIP);
-                y--;
+                x++;
+            }
+        }
+
+        // Try going down.
+        else if (randomDirection == 2 && y + (shipCellSize - 1) <= 10)
+        {
+            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            {
+                setCell(x, y, Cell.SHIP);
+                y++;
+            }
+        }
+
+        // Try going left.
+        else if (randomDirection == 3 && x - (shipCellSize - 1) >= 0)
+        {
+            for (int i = shipCellSize; shipCellSize > 0; shipCellSize--)
+            {
+                setCell(x, y, Cell.SHIP);
+                x--;
             }
         }
 

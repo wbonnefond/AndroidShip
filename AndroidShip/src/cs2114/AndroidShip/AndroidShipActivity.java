@@ -1,5 +1,6 @@
 package cs2114.AndroidShip;
 
+import android.os.Bundle;
 import android.app.Activity;
 
 /**
@@ -13,5 +14,25 @@ import android.app.Activity;
 public class AndroidShipActivity
     extends Activity
 {
+
+    private AndroidShipBoard player;
+    private AndroidShipBoard opponent;
+    private AndroidShipView playerView;
+    private AndroidShipView opponentView;
+    private String statusLabel;
+
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+        player = new AndroidShipBoard();
+        opponent = new AndroidShipBoard();
+        player.placeShips();
+        opponent.placeShips();
+
+
+
+    }
 
 }
