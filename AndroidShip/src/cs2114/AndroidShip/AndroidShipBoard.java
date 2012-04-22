@@ -47,7 +47,6 @@ public class AndroidShipBoard
 
     /**
      * Gets the maze cell.
-     *
      * @param x
      *            - column that the cell is in
      * @param y
