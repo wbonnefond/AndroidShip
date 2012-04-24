@@ -14,7 +14,7 @@ public class AndroidShipBoard
     extends Observable
 {
     private Cell[][] shipCells;
-    private boolean isPlaced;
+    private boolean  isPlaced;
 
 
     /**
@@ -49,6 +49,7 @@ public class AndroidShipBoard
 
     /**
      * Gets the maze cell.
+     *
      * @param x
      *            - column that the cell is in
      * @param y
@@ -99,33 +100,33 @@ public class AndroidShipBoard
         // Ship sizes: 5, 4, 3, 3, 2
         // Keep running each method until the ship is actually placed
 
-        if(!isPlaced)
+        while (!isPlaced)
         {
             pickRandomDirection(5);
         }
         isPlaced = false;
 
-        if(!isPlaced)
+        while (!isPlaced)
         {
-        pickRandomDirection(4);
+            pickRandomDirection(4);
         }
         isPlaced = false;
 
-        if(!isPlaced)
+        while (!isPlaced)
         {
-        pickRandomDirection(3);
+            pickRandomDirection(3);
         }
         isPlaced = false;
 
-        if(!isPlaced)
+        while (!isPlaced)
         {
-        pickRandomDirection(3);
+            pickRandomDirection(3);
         }
         isPlaced = false;
 
-        if(!isPlaced)
+        while (!isPlaced)
         {
-        pickRandomDirection(2);
+            pickRandomDirection(2);
         }
     }
 
@@ -147,7 +148,7 @@ public class AndroidShipBoard
         // Try going up.
         if (randomDirection == 0 && y - (shipCellSize - 1) >= 0)
         {
-            if(checkAhead(x, y, shipCellSize, randomDirection))
+            if (checkAhead(x, y, shipCellSize, randomDirection))
             {
                 while (shipCellSize > 0)
                 {
@@ -162,47 +163,61 @@ public class AndroidShipBoard
         // Try going right.
         else if (randomDirection == 1 && x + (shipCellSize - 1) <= 9)
         {
-            while(shipCellSize > 0)
+            if (checkAhead(x, y, shipCellSize, randomDirection))
             {
-                setCell(x, y, Cell.SHIP);
-                x++;
-                shipCellSize--;
+                while (shipCellSize > 0)
+                {
+                    setCell(x, y, Cell.SHIP);
+                    x++;
+                    shipCellSize--;
+                }
+                isPlaced = true;
             }
-            isPlaced = true;
         }
 
         // Try going down.
         else if (randomDirection == 2 && y + (shipCellSize - 1) <= 9)
         {
-            while(shipCellSize > 0)
+            if (checkAhead(x, y, shipCellSize, randomDirection))
             {
-                setCell(x, y, Cell.SHIP);
-                y++;
-                shipCellSize--;
+                while (shipCellSize > 0)
+                {
+                    setCell(x, y, Cell.SHIP);
+                    y++;
+                    shipCellSize--;
+                }
+                isPlaced = true;
             }
-            isPlaced = true;
         }
 
         // Try going left.
         else if (randomDirection == 3 && x - (shipCellSize - 1) >= 0)
         {
-            while(shipCellSize > 0)
+            if (checkAhead(x, y, shipCellSize, randomDirection))
             {
-                setCell(x, y, Cell.SHIP);
-                x--;
-                shipCellSize--;
+                while (shipCellSize > 0)
+                {
+                    setCell(x, y, Cell.SHIP);
+                    x--;
+                    shipCellSize--;
+                }
+                isPlaced = true;
             }
-            isPlaced = true;
         }
     }
+
 
     // ----------------------------------------------------------
     /**
      * Checks ahead to see if there are already ships in the new ship placement
      * path.
-     * @param xCoord The xCoord to start at
-     * @param yCoord The yCoord to start at
-     * @param sCellSize The new ship's size
+     *
+     * @param xCoord
+     *            The xCoord to start at
+     * @param yCoord
+     *            The yCoord to start at
+     * @param sCellSize
+     *            The new ship's size
      * @return Whether the path to place the ship is clear or not
      */
     private boolean checkAhead(int xCoord, int yCoord, int sCellSize, int dir)
@@ -214,56 +229,60 @@ public class AndroidShipBoard
         int truthCounter = 0;
 
         // Look up.
-        if(randomDirection == 0)
+        if (randomDirection == 0)
         {
-            while(y >= y-(shipCellSize-1))
+            while (y >= y - (shipCellSize - 1))
             {
-                if(shipCells[x][y] == Cell.WATER)
+                if (shipCells[x][y] == Cell.WATER)
                 {
                     truthCounter++;
                 }
                 y--;
+                shipCellSize--;
             }
         }
 
         // Look right.
-        else if(randomDirection == 1)
+        else if (randomDirection == 1)
         {
-            while(x <= x-(shipCellSize-1))
+            while (x <= x - (shipCellSize - 1))
             {
-                if(shipCells[x][y] == Cell.WATER)
+                if (shipCells[x][y] == Cell.WATER)
                 {
                     truthCounter++;
                 }
                 x++;
+                shipCellSize--;
             }
         }
 
         // Look down.
-        else if(randomDirection == 2)
+        else if (randomDirection == 2)
         {
-            while(y <= y-(shipCellSize-1))
+            while (y <= y - (shipCellSize - 1))
             {
-                if(shipCells[x][y] == Cell.WATER)
+                if (shipCells[x][y] == Cell.WATER)
                 {
                     truthCounter++;
                 }
                 y++;
+                shipCellSize--;
             }
         }
 
         // Look left.
-        else if(randomDirection == 3)
+        else if (randomDirection == 3)
         {
-            while(x >= x-(shipCellSize-1))
+            while (x >= x - (shipCellSize - 1))
             {
-                if(shipCells[x][y] == Cell.WATER)
+                if (shipCells[x][y] == Cell.WATER)
                 {
                     truthCounter++;
                 }
                 x--;
+                shipCellSize--;
             }
         }
-        return shipCellSize == truthCounter;
+        return sCellSize == truthCounter;
     }
 }
