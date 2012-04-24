@@ -222,9 +222,13 @@ public class AndroidShipBoard
                 {
                     truthCounter++;
                 }
+<<<<<<< HEAD
                 y--;
+=======
+>>>>>>> refs/remotes/origin/tyler
             }
         }
+<<<<<<< HEAD
 
         // Look right.
         else if(randomDirection == 1)
@@ -264,6 +268,8 @@ public class AndroidShipBoard
                 x--;
             }
         }
+=======
+>>>>>>> refs/remotes/origin/tyler
         return shipCellSize == truthCounter;
     }
 }
