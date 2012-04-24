@@ -22,6 +22,10 @@ public class AndroidShipActivity
     private AndroidShipView opponentView;
     private TextView statusLabel;
 
+    /**
+     * Called when the activity starts.
+     * @param savedInstanceState the saved state
+     */
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -29,8 +33,8 @@ public class AndroidShipActivity
 
         player = new AndroidShipBoard();
         opponent = new AndroidShipBoard();
-        //player.placeShips();
-        //opponent.placeShips();
+        player.placeShips();
+        opponent.placeShips();
 
         playerView = (AndroidShipView) findViewById(R.id.shipViewPlayer);
         opponentView = (AndroidShipView) findViewById(R.id.shipViewOpponent);
@@ -38,10 +42,23 @@ public class AndroidShipActivity
 
         playerView.setBoard(player);
         opponentView.setBoard(opponent);
+        opponentView.setOpponent(true);
+    }
 
-        playerView.setClickable(true);
+    /**
+     * Gets the players board for testing.
+     * @return the players board
+     */
+    public AndroidShipBoard getPlayerBoard() {
+        return player;
+    }
 
-
+    /**
+     * Gets the opponents board for testing.
+     * @return the opponent board
+     */
+    public AndroidShipBoard getOpponentBoard() {
+        return opponent;
     }
 
 }
