@@ -82,7 +82,7 @@ public class AndroidShipView
     {
         boolean touched = false;
 
-        if (board.touchable()) {
+        if (isOpponent && !board.getTurn()) {
             float cellWidth = getWidth() / board.getBoardSize();
             float cellHeight = getHeight() / board.getBoardSize();
             switch (e.getAction())

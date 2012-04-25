@@ -24,8 +24,8 @@ public class AndroidShipModel {
         player1Board.placeShips();
         player2Board.placeShips();
         currentPlayerBoard = player1Board;
-        player1Board.setTouchable(false);
-        player2Board.setTouchable(true);
+        player1Board.canTouch(false);
+        player2Board.canTouch(true);
         player1Board.setTurn(true);
         player2Board.setTurn(false);
     }
