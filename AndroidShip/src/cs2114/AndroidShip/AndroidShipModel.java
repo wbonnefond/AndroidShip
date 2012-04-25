@@ -24,15 +24,10 @@ public class AndroidShipModel {
         player1Board.placeShips();
         player2Board.placeShips();
         currentPlayerBoard = player1Board;
-<<<<<<< OURS
         player1Board.canTouch(false);
         player2Board.canTouch(true);
         player1Board.setTurn(true);
         player2Board.setTurn(false);
-=======
-        player1Board.canFire(false);
-        player2Board.canFire(true);
->>>>>>> THEIRS
     }
 
     // ----------------------------------------------------------
@@ -61,11 +56,8 @@ public class AndroidShipModel {
      */
     public boolean fireAtBoard(int xCoor, int yCoor) {
         boolean firedSuccessful = false;
-<<<<<<< OURS
         if (currentPlayerBoard == player1Board && player1Board.getTurn()) {
-=======
-        if (currentPlayerBoard == player1Board) {
->>>>>>> THEIRS
+
             player2Board.fire(xCoor, yCoor);
             firedSuccessful = true;
         }
