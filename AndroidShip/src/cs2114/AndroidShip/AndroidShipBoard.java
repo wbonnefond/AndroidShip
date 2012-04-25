@@ -17,6 +17,7 @@ public class AndroidShipBoard
     private boolean  isPlaced;
     private String status;
     private boolean firable;
+    private boolean turn;
 
 
     /**
@@ -30,6 +31,7 @@ public class AndroidShipBoard
         setCellsToWater();
         status = "Click a cell to fire";
         firable = false;
+        turn = false;
     }
 
 
@@ -88,16 +90,34 @@ public class AndroidShipBoard
      * Sets the firable variable to true or false.
      * @param fire sets firable variable
      */
-    public void setCanFire(boolean fire)
+    public void canTouch(boolean fire)
     {
         firable = fire;
+    }
+
+    /**
+     * Sets true if it is your turn, false if it is not.
+     * @param yourTurn - sets the turn variable
+     */
+    public void setTurn(boolean yourTurn)
+    {
+        turn = yourTurn;
+    }
+
+    /**
+     * Returns if it is your turn.
+     * @return turn - returns turn variable to see if it is your turn.
+     */
+    public boolean getTurn()
+    {
+        return turn;
     }
 
     /**
      * Returns if the user can fire on the spot that they click on.
      * @return firable - returns if user can fire or not
      */
-    public boolean canFire()
+    public boolean touchable()
     {
         return firable;
     }
