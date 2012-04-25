@@ -16,8 +16,7 @@ public class AndroidShipActivity
     extends Activity
 {
 
-    private AndroidShipBoard player;
-    private AndroidShipBoard opponent;
+    private AndroidShipModel model;
     private AndroidShipView playerView;
     private AndroidShipView opponentView;
     private TextView statusLabel;
@@ -31,34 +30,18 @@ public class AndroidShipActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        player = new AndroidShipBoard();
-        opponent = new AndroidShipBoard();
-        player.placeShips();
-        opponent.placeShips();
+        model = new AndroidShipModel();
 
         playerView = (AndroidShipView) findViewById(R.id.shipViewPlayer);
         opponentView = (AndroidShipView) findViewById(R.id.shipViewOpponent);
         statusLabel = (TextView) findViewById(R.id.statusLabel);
 
-        playerView.setBoard(player);
-        opponentView.setBoard(opponent);
+        playerView.setModel(model);
+        opponentView.setModel(model);
+        playerView.setBoard(model.getPlayer1Board());
+        opponentView.setBoard(model.getPlayer2Board());
         opponentView.setOpponent(true);
     }
 
-    /**
-     * Gets the players board for testing.
-     * @return the players board
-     */
-    public AndroidShipBoard getPlayerBoard() {
-        return player;
-    }
-
-    /**
-     * Gets the opponents board for testing.
-     * @return the opponent board
-     */
-    public AndroidShipBoard getOpponentBoard() {
-        return opponent;
-    }
 
 }

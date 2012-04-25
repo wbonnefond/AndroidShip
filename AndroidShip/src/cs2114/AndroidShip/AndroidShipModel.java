@@ -24,8 +24,8 @@ public class AndroidShipModel {
         player1Board.placeShips();
         player2Board.placeShips();
         currentPlayerBoard = player1Board;
-        player1Board.canFire(false);
-        player2Board.canFire(true);
+        player1Board.setCanFire(false);
+        player2Board.setCanFire(true);
     }
 
     // ----------------------------------------------------------

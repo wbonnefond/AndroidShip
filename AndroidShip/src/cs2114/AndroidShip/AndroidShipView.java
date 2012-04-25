@@ -23,6 +23,7 @@ public class AndroidShipView
     extends View
 {
     private AndroidShipBoard board;
+    private AndroidShipModel model;
     private boolean          isOpponent;
 
 
@@ -65,6 +66,10 @@ public class AndroidShipView
         board.addObserver(new BoardObserver());
     }
 
+    public void setModel(AndroidShipModel newModel) {
+        model = newModel;
+    }
+
 
     /**
      * Handles touch events on the board.
@@ -77,7 +82,7 @@ public class AndroidShipView
     {
         boolean touched = false;
 
-        if (board.canFire()) {
+
             float cellWidth = getWidth() / board.getBoardSize();
             float cellHeight = getHeight() / board.getBoardSize();
             switch (e.getAction())
@@ -86,7 +91,8 @@ public class AndroidShipView
                     int touchX = (int)(e.getX() / cellWidth);
                     int touchY = (int)(e.getY() / cellHeight);
 
-                    board.fire(touchX, touchY);
+                    model.fireAtBoard(touchX, touchY);
+                    model.switchBoard();
 
                     touched = true;
                     break;
@@ -97,7 +103,7 @@ public class AndroidShipView
                     touched = true;
                     break;
             }
-        }
+
 
         return touched;
     }
