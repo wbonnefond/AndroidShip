@@ -105,6 +105,26 @@ public class AndroidShipBoard
     }
 
     /**
+     * Checks to see if all of the ships are uncovered for either player, if
+     * they are, the game is over.
+     * @return returns if the game is over or not.
+     */
+    public boolean isGameOver()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (getCell(i, j) == Cell.SHIP)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
      * Returns if it is your turn.
      * @return turn - returns turn variable to see if it is your turn.
      */
