@@ -82,7 +82,11 @@ public class AndroidShipView
     {
         boolean touched = false;
 
+<<<<<<< OURS
         if (isOpponent && !board.getTurn()) {
+=======
+        if (board.canFire()) {
+>>>>>>> THEIRS
             float cellWidth = getWidth() / board.getBoardSize();
             float cellHeight = getHeight() / board.getBoardSize();
             switch (e.getAction())
@@ -91,6 +95,7 @@ public class AndroidShipView
                     int touchX = (int)(e.getX() / cellWidth);
                     int touchY = (int)(e.getY() / cellHeight);
 
+<<<<<<< OURS
                     model.fireAtBoard(touchX, touchY);
                     model.switchBoard();
 
@@ -105,6 +110,19 @@ public class AndroidShipView
             }
 
 
+=======
+                    board.fire(touchX, touchY);
+
+                    touched = true;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    touched = true;
+                    break;
+                case MotionEvent.ACTION_UP:
+                    touched = true;
+                    break;
+            }
+>>>>>>> THEIRS
         }
         return touched;
     }
