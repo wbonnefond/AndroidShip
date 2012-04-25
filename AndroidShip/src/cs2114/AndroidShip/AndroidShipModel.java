@@ -24,8 +24,10 @@ public class AndroidShipModel {
         player1Board.placeShips();
         player2Board.placeShips();
         currentPlayerBoard = player1Board;
-        player1Board.setCanFire(false);
-        player2Board.setCanFire(true);
+        player1Board.setTouchable(false);
+        player2Board.setTouchable(true);
+        player1Board.setTurn(true);
+        player2Board.setTurn(false);
     }
 
     // ----------------------------------------------------------
@@ -35,9 +37,13 @@ public class AndroidShipModel {
     public void switchBoard() {
         if (currentPlayerBoard == player1Board) {
             currentPlayerBoard = player2Board;
+            player2Board.setTurn(true);
+            player1Board.setTurn(false);
         }
         else {
             currentPlayerBoard = player1Board;
+            player1Board.setTurn(true);
+            player2Board.setTurn(false);
         }
     }
 
@@ -50,7 +56,7 @@ public class AndroidShipModel {
      */
     public boolean fireAtBoard(int xCoor, int yCoor) {
         boolean firedSuccessful = false;
-        if (currentPlayerBoard == player1Board) {
+        if (currentPlayerBoard == player1Board && player1Board.getTurn()) {
             player2Board.fire(xCoor, yCoor);
             firedSuccessful = true;
         }

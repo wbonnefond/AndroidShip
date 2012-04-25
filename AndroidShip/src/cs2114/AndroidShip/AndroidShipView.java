@@ -82,7 +82,7 @@ public class AndroidShipView
     {
         boolean touched = false;
 
-
+        if (board.touchable()) {
             float cellWidth = getWidth() / board.getBoardSize();
             float cellHeight = getHeight() / board.getBoardSize();
             switch (e.getAction())
@@ -105,6 +105,7 @@ public class AndroidShipView
             }
 
 
+        }
         return touched;
     }
 
