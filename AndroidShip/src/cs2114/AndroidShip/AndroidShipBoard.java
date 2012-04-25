@@ -15,6 +15,8 @@ public class AndroidShipBoard
 {
     private Cell[][] shipCells;
     private boolean  isPlaced;
+    private String status;
+    private boolean firable;
 
 
     /**
@@ -26,6 +28,8 @@ public class AndroidShipBoard
         isPlaced = false;
         shipCells = new Cell[10][10];
         setCellsToWater();
+        status = "Click a cell to fire";
+        firable = false;
     }
 
 
@@ -59,6 +63,52 @@ public class AndroidShipBoard
     public Cell getCell(int x, int y)
     {
         return shipCells[x][y];
+    }
+
+    /**
+     * Sets hit ships to correct cell colors.
+     * @param x - x coordinate of the hit
+     * @param y - y coordinate of the hit
+     */
+    public void fire(int x, int y)
+    {
+        if (getCell(x, y) == Cell.SHIP)
+        {
+            setCell(x, y, Cell.HIT);
+            status = "Successful shot at (" + x + ", " + y + ")";
+        }
+        else if (getCell(x, y) == Cell.WATER)
+        {
+            setCell(x, y, Cell.MISS);
+            status = "You missed at (" + x + ", " + y + ")";
+        }
+    }
+
+    /**
+     * Sets the firable variable to true or false.
+     * @param fire sets firable variable
+     */
+    public void setCanFire(boolean fire)
+    {
+        firable = fire;
+    }
+
+    /**
+     * Returns if the user can fire on the spot that they click on.
+     * @return firable - returns if user can fire or not
+     */
+    public boolean canFire()
+    {
+        return firable;
+    }
+
+    /**
+     * Returns the status.
+     * @return status - returns the current status
+     */
+    public String getStatus()
+    {
+        return status;
     }
 
 
