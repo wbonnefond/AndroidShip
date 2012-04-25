@@ -77,30 +77,26 @@ public class AndroidShipView
     {
         boolean touched = false;
 
-        float cellWidth = getWidth() / board.getBoardSize();
-        float cellHeight = getHeight() / board.getBoardSize();
-        switch (e.getAction())
-        {
-            case MotionEvent.ACTION_DOWN:
-                int touchX = (int)(e.getX() / cellWidth);
-                int touchY = (int)(e.getY() / cellHeight);
+        if (board.canFire()) {
+            float cellWidth = getWidth() / board.getBoardSize();
+            float cellHeight = getHeight() / board.getBoardSize();
+            switch (e.getAction())
+            {
+                case MotionEvent.ACTION_DOWN:
+                    int touchX = (int)(e.getX() / cellWidth);
+                    int touchY = (int)(e.getY() / cellHeight);
 
-                if (board.getCell(touchX, touchY) == Cell.WATER)
-                {
-                    board.setCell(touchX, touchY, Cell.MISS);
-                }
-                else if (board.getCell(touchX, touchY) == Cell.SHIP)
-                {
-                    board.setCell(touchX, touchY, Cell.HIT);
-                }
-                touched = true;
-                break;
-            case MotionEvent.ACTION_MOVE:
-                touched = true;
-                break;
-            case MotionEvent.ACTION_UP:
-                touched = true;
-                break;
+                    board.fire(touchX, touchY);
+
+                    touched = true;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    touched = true;
+                    break;
+                case MotionEvent.ACTION_UP:
+                    touched = true;
+                    break;
+            }
         }
 
         return touched;

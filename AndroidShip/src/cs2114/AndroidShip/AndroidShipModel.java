@@ -21,7 +21,11 @@ public class AndroidShipModel {
     public AndroidShipModel() {
         player1Board = new AndroidShipBoard();
         player2Board = new AndroidShipBoard();
+        player1Board.placeShips();
+        player2Board.placeShips();
         currentPlayerBoard = player1Board;
+        player1Board.canFire(false);
+        player2Board.canFire(true);
     }
 
     // ----------------------------------------------------------
@@ -47,24 +51,12 @@ public class AndroidShipModel {
     public boolean fireAtBoard(int xCoor, int yCoor) {
         boolean firedSuccessful = false;
         if (currentPlayerBoard == player1Board) {
-            if (player2Board.getCell(xCoor, yCoor) == Cell.SHIP) {
-                player2Board.setCell(xCoor, yCoor, Cell.HIT);
-                firedSuccessful = true;
-            }
-            else if (player2Board.getCell(xCoor, yCoor) == Cell.WATER) {
-                player2Board.setCell(xCoor, yCoor, Cell.MISS);
-                firedSuccessful = true;
-            }
+            player2Board.fire(xCoor, yCoor);
+            firedSuccessful = true;
         }
         else {
-            if (player1Board.getCell(xCoor, yCoor) == Cell.SHIP) {
-                player1Board.setCell(xCoor, yCoor, Cell.HIT);
-                firedSuccessful = true;
-            }
-            else if (player1Board.getCell(xCoor, yCoor) == Cell.WATER) {
-                player1Board.setCell(xCoor, yCoor, Cell.MISS);
-                firedSuccessful = true;
-            }
+            player1Board.fire(xCoor, yCoor);
+            firedSuccessful = true;
         }
         return firedSuccessful;
     }
